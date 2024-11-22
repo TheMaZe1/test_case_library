@@ -49,7 +49,6 @@ def main():
                 case 2:
                     id_ = int(input("id book: "))
                     delete_book(id_, library)
-                    print("Book not found")
 
                 case 3:
                     view.show_menu_search()
@@ -74,7 +73,7 @@ def main():
                 case 5:
                     id_ = int(input("id book: "))
                     update_status(id_, library)
-                    print("Book not found")
+                    print("Status updated")
 
                 case 0:
                     break
