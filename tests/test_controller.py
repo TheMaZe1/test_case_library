@@ -1,3 +1,4 @@
+from collections.abc import Generator
 from unittest.mock import MagicMock, patch
 import pytest
 
@@ -11,10 +12,10 @@ def mock_repo() -> MagicMock:
     return mock_repo
 
 @pytest.fixture
-def mock_view() -> MagicMock:
+def mock_view() -> Generator[MagicMock, None, None]:
     """Create mock object for view"""
     with patch('app.controller.view') as mock_view:
-        return mock_view
+        yield mock_view
 
 
 def test_add_book(mock_repo: MagicMock):

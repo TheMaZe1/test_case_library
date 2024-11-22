@@ -10,9 +10,9 @@ import app.repo as repo
 @pytest.fixture
 def temp_repo() -> repo.LibraryRepository:
     """Fixture for temp DB"""
-    with open('../test_db.json', 'w', encoding='utf-8') as f:
+    with open('test_db.json', 'w', encoding='utf-8') as f:
         json.dump([], f)
-    temp_repo: repo.LibraryRepository = repo.LibraryRepository('../test_db.json')
+    temp_repo: repo.LibraryRepository = repo.LibraryRepository('test_db.json')
     return temp_repo
 
 
