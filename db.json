@@ -1,1 +1,30 @@
-[{"id_": 1, "title": "Lying Awake", "author": "Mark Salzman", "year": "2000", "status": "In stock"}, {"id_": 2, "title": "Pigs in Heaven", "author": "Barbara Kingsolver", "year": "1993", "status": "In stock"}, {"id_": 3, "title": "Pride and Prejudice", "author": "Jane Austen", "year": "1983", "status": "In stock"}, {"id_": 4, "title": "Isle of Dogs", "author": "Patricia Cornwell", "year": "2002", "status": "In stock"}]
+[
+    {
+        "id_": 1,
+        "title": "Lying Awake",
+        "author": "Mark Salzman",
+        "year": "2000",
+        "status": "In stock"
+    },
+    {
+        "id_": 2,
+        "title": "Pigs in Heaven",
+        "author": "Barbara Kingsolver",
+        "year": "1993",
+        "status": "In stock"
+    },
+    {
+        "id_": 3,
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "year": "1983",
+        "status": "In stock"
+    },
+    {
+        "id_": 4,
+        "title": "Isle of Dogs",
+        "author": "Patricia Cornwell",
+        "year": "2002",
+        "status": "In stock"
+    }
+]

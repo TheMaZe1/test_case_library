@@ -6,7 +6,6 @@ import json
 from model import Book
 
 
-DATABASE = './db.json'
 
 class NotFoundException(Exception):
     pass
@@ -19,10 +18,11 @@ class LibraryRepository:
         'Given': 'In stock'
     }
 
-    def __init__(self) -> None:
+    def __init__(self, database_path: str) -> None:
         self.books: list[Book] = []
-        if os.path.exists(DATABASE):
-            with open(DATABASE, 'r', encoding='UTF-8') as f:
+        self.DATABASE = database_path
+        if os.path.exists(self.DATABASE):
+            with open(self.DATABASE, 'r', encoding='UTF-8') as f:
                 books: list[dict] = json.load(f)
                 for book in books:
                     self.books.append(Book(int(book['id_']) ,book['title'],book['author'],book['year'],book['status']))
@@ -70,7 +70,7 @@ class LibraryRepository:
 
     def search_book_author(self, author: str) -> Book:
         """Search book for author. Raise exception if book not found"""
-        result: Book = next((book for book in self.books if book.id_ == author), None)
+        result: Book = next((book for book in self.books if book.author == author), None)
         if result:
             return result
         else:
@@ -94,5 +94,5 @@ class LibraryRepository:
 
     def _save_book(self) -> None:
         """Inner func, update JSON file DB"""
-        with open(DATABASE, 'w') as f:
+        with open(self.DATABASE, 'w') as f:
             f.write(json.dumps([asdict(book) for book in self.books]))
