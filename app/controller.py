@@ -49,6 +49,7 @@ def main():
                 case 2:
                     id_ = int(input("id book: "))
                     delete_book(id_, library)
+                    print("Book deleted")
 
                 case 3:
                     view.show_menu_search()

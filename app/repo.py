@@ -53,7 +53,7 @@ class LibraryRepository:
 
     def search_book_id(self, id_: int) -> Book:
         """Search bok for id. Raise exception if book not found"""
-        result: Book = next((book for book in self.books if book.id_ == id_), None)
+        result: Book | None = next((book for book in self.books if book.id_ == id_), None)
         if result:
             return result
         else:
@@ -62,7 +62,7 @@ class LibraryRepository:
 
     def search_book_title(self, title: str) -> Book:
         """Search book for titile. Raise exception if book not found"""
-        result: Book = next((book for book in self.books if book.title == title), None)
+        result: Book | None = next((book for book in self.books if book.title == title), None)
         if result:
             return result
         else:
@@ -70,7 +70,7 @@ class LibraryRepository:
 
     def search_book_author(self, author: str) -> Book:
         """Search book for author. Raise exception if book not found"""
-        result: Book = next((book for book in self.books if book.author == author), None)
+        result: Book | None = next((book for book in self.books if book.author == author), None)
         if result:
             return result
         else:
@@ -84,7 +84,7 @@ class LibraryRepository:
     
     def update_book_status(self, id_: int) -> None:
         """Update status for book by id"""
-        result: Book = next((book for book in self.books if book.id_ == id_), None)
+        result: Book | None = next((book for book in self.books if book.id_ == id_), None)
         if result:
             result.status = self.STATUS[result.status]
             self._save_book()
