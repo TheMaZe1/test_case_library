@@ -3,7 +3,6 @@ from dataclasses import dataclass
 
 @dataclass
 class Book:
-    """Class for keeping book"""
     id_: int
     title: str
     author: str
