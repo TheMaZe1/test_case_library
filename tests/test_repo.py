@@ -9,7 +9,7 @@ import app.repo as repo
 
 @pytest.fixture
 def temp_repo() -> repo.LibraryRepository:
-    """Fixture for temp DB"""
+    """Fixture для создания временной БД"""
     with open('test_db.json', 'w', encoding='utf-8') as f:
         json.dump([], f)
     temp_repo: repo.LibraryRepository = repo.LibraryRepository('test_db.json')
@@ -49,7 +49,7 @@ def test_delete_book(temp_repo: repo.LibraryRepository):
 
         mock_save.assert_called()
 
-    with pytest.raises(repo.NotFoundException):
+    with pytest.raises(repo.BookNotFoundException):
         temp_repo.delete_book(999)
 
 
@@ -63,7 +63,7 @@ def test_search_book_id(temp_repo: repo.LibraryRepository):
     assert book.year == "2024"
     assert book.status == "In stock"
 
-    with pytest.raises(repo.NotFoundException):
+    with pytest.raises(repo.BookNotFoundException):
         temp_repo.search_book_id(999)
 
 
@@ -77,7 +77,7 @@ def test_search_book_title(temp_repo: repo.LibraryRepository):
     assert book.year == "2024"
     assert book.status == "In stock"
 
-    with pytest.raises(repo.NotFoundException):
+    with pytest.raises(repo.BookNotFoundException):
         temp_repo.search_book_title("NOTFOUND")
 
 
@@ -91,7 +91,7 @@ def test_search_book_author(temp_repo: repo.LibraryRepository):
     assert book.year == "2024"
     assert book.status == "In stock"
 
-    with pytest.raises(repo.NotFoundException):
+    with pytest.raises(repo.BookNotFoundException):
         temp_repo.search_book_author("NOTFOUND")
 
 
@@ -111,5 +111,5 @@ def test_update_book_status(temp_repo: repo.LibraryRepository):
     temp_repo.update_book_status(1)
     assert temp_repo.books[0].status == "In stock"
 
-    with pytest.raises(repo.NotFoundException):
+    with pytest.raises(repo.BookNotFoundException):
         temp_repo.search_book_author(999)
